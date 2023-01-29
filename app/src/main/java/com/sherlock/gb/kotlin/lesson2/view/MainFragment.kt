@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.sherlock.gb.kotlin.lesson2.R
 import com.sherlock.gb.kotlin.lesson2.viewmodel.MainViewModel
 
@@ -20,7 +22,33 @@ class MainFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+
+//        val observer0 = object : Observer<Any> {
+//            override fun onChanged(t: Any?) {
+//                renderData(t!!)
+//            }
+//        }
+/**
+ * Здесь ошибка, пришлось перенести как в уроке в onActivityCreated
+        val observer = Observer<Any>{
+            renderData(it)
+        }
+
+        viewModel.getData().observe(viewLifecycleOwner,observer)
+*/
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        //настроим так, что если что-то изменится в getData в классе MainViewModel,
+        // то будет вызываться метод renderData
+        val observer = Observer<Any>{
+            renderData(it)
+        }
+        viewModel.getData().observe(viewLifecycleOwner,observer)
+
+
     }
 
     override fun onCreateView(
@@ -30,4 +58,7 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
+    private fun renderData(data: Any){
+        Toast.makeText(context,"data",Toast.LENGTH_LONG).show()
+    }
 }
