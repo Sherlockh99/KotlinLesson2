@@ -9,9 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.sherlock.gb.kotlin.lesson2.R
+import com.sherlock.gb.kotlin.lesson2.databinding.FragmentMainBinding
 import com.sherlock.gb.kotlin.lesson2.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding
+        get() = _binding!!
 
     companion object {
         fun newInstance() = MainFragment()
@@ -55,10 +60,16 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        _binding = FragmentMainBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     private fun renderData(data: Any){
         Toast.makeText(context,"data",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
