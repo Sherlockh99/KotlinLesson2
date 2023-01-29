@@ -1,4 +1,4 @@
-package com.sherlock.gb.kotlin.lesson2.ui.main
+package com.sherlock.gb.kotlin.lesson2.viewmodel
 
 import androidx.lifecycle.ViewModel
 

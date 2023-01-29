@@ -1,4 +1,4 @@
-package com.sherlock.gb.kotlin.lesson2.ui.main
+package com.sherlock.gb.kotlin.lesson2.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sherlock.gb.kotlin.lesson2.R
+import com.sherlock.gb.kotlin.lesson2.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 

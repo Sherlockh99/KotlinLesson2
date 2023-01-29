@@ -1,8 +1,8 @@
-package com.sherlock.gb.kotlin.lesson2
+package com.sherlock.gb.kotlin.lesson2.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sherlock.gb.kotlin.lesson2.ui.main.MainFragment
+import com.sherlock.gb.kotlin.lesson2.R
 
 class MainActivity : AppCompatActivity() {
 
